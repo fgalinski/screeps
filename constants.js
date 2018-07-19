@@ -3,7 +3,7 @@ module.exports = {
     ROLE_UPGRADER: 'Upgrader',
 
     MAX_AMOUNT_HARVESTERS: 10,
-    MAX_AMOUNT_UPGRADER: 3,
+    MAX_AMOUNT_UPGRADER: 2,
 
     PARTS_SMALL_HARVESTER: [
         WORK, CARRY, MOVE, MOVE
