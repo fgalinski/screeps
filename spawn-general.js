@@ -1,22 +1,21 @@
-const MAX_AMOUNT_WORKER = 5;
-
-const SMALL_WORKER = [
-    WORK, CARRY, MOVE, MOVE
-];
+let constants = require('constants');
 
 module.exports = {
+    /**
+     * Handles the spawning.
+     */
     handleSpawning: function () {
         for (let spawnName in Game.spawns) {
             let spawn = Game.spawns[spawnName];
-            if (spawn.canCreateCreep(SMALL_WORKER) !== OK) {
+            if (spawn.canCreateCreep(constants.SMALL_HARVESTER_PARTS) !== OK) {
                 continue;
             }
 
-            if (Game.creeps.length >= MAX_AMOUNT_WORKER) {
+            if (Game.creeps.length >= constants.MAX_AMOUNT_HARVESTERS) {
                 continue;
             }
 
-            spawn.createCreep(SMALL_WORKER);
+            spawn.createCreep(constants.SMALL_HARVESTER_PARTS, undefined, constants.SMALL_HARVESTER_MEMORY);
         }
     }
 };
