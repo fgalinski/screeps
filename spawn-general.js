@@ -11,7 +11,7 @@ module.exports = {
                 continue;
             }
 
-            if (Game.creeps.length >= constants.MAX_AMOUNT_HARVESTERS) {
+            if (_(Game.creeps).size() >= constants.MAX_AMOUNT_HARVESTERS) {
                 continue;
             }
 
