@@ -1,7 +1,16 @@
+const SMALL_WORKER = [
+    WORK, CARRY, MOVE, MOVE
+];
+
 module.exports = {
     handleSpawning: function () {
         for (let spawnName in Game.spawns) {
-            console.log(Game.spawns[spawnName]);
+            let spawn = Game.spawns[spawnName];
+            if (spawn.spawn.canCreateCreep(SMALL_WORKER) !== OK) {
+                continue;
+            }
+
+            spawn.createCreep(SMALL_WORKER);
         }
     }
 };
