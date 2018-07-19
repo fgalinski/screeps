@@ -1,3 +1,5 @@
+const MAX_AMOUNT_WORKER = 5;
+
 const SMALL_WORKER = [
     WORK, CARRY, MOVE, MOVE
 ];
@@ -7,6 +9,10 @@ module.exports = {
         for (let spawnName in Game.spawns) {
             let spawn = Game.spawns[spawnName];
             if (spawn.canCreateCreep(SMALL_WORKER) !== OK) {
+                continue;
+            }
+
+            if (Game.creeps.length >= MAX_AMOUNT_WORKER) {
                 continue;
             }
 
