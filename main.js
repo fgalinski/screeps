@@ -1,4 +1,4 @@
-let spawnGeneral = require('Spawn/spawn-general');
+let spawnGeneral = require('spawn-general');
 
 module.exports.loop = function () {
     spawnGeneral.handleSpawning();
