@@ -25,7 +25,7 @@ module.exports = {
             }
         } else {
             let closestSpawn = harvester.pos.findClosestByPath(FIND_MY_SPAWNS);
-            let transferResult = harvester.withdraw(closestSpawn, RESOURCE_ENERGY);
+            let transferResult = harvester.transferEnergy(closestSpawn);
             if (transferResult !== OK) {
                 switch (transferResult) {
                     case ERR_NOT_IN_RANGE:
