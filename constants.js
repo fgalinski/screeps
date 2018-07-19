@@ -8,7 +8,7 @@ module.exports = {
     ],
 
     SMALL_HARVESTER_MEMORY: {
-        role: this.ROLE_HARVESTER,
+        role: 'Harvester',
         working: false
     }
 };
