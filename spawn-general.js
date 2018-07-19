@@ -1,7 +1,7 @@
 module.exports = {
     handleSpawning: function () {
-        for (let spawn in Game.spawns) {
-            console.log(spawn);
+        for (let spawnName in Game.spawns) {
+            console.log(Game.spawns[spawnName]);
         }
     }
 };
