@@ -23,12 +23,12 @@ module.exports = {
                 }
             }
         } else {
-            let closestSource = upgrader.pos.findClosestByPath(FIND_SOURCES);
-            let transferResult = upgrader.withdraw(closestSource, RESOURCE_ENERGY);
+            let closestSpawn = upgrader.pos.findClosestByPath(FIND_MY_SPAWNS);
+            let transferResult = upgrader.withdraw(closestSpawn, RESOURCE_ENERGY);
             if (transferResult !== OK) {
                 switch (transferResult) {
                     case ERR_NOT_IN_RANGE:
-                        upgrader.moveTo(closestSource);
+                        upgrader.moveTo(closestSpawn);
                         break;
                 }
             }
