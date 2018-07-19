@@ -1,6 +1,8 @@
 module.exports = {
     /**
      * Runs the given creep as a harvester.
+     *
+     * @param harvester Creep
      */
     run: function (harvester) {
         if (harvester.carry.energy <= 0) {
@@ -12,7 +14,7 @@ module.exports = {
                 harvester.memory.working = false;
             }
 
-            let closestSource = harvester.pos.findClosestByPath(Source);
+            let closestSource = harvester.pos.findClosestByPath(FIND_SOURCES);
             let harvestResult = harvester.harvest(closestSource);
             if (harvestResult !== OK) {
                 switch (harvestResult) {
@@ -22,7 +24,7 @@ module.exports = {
                 }
             }
         } else {
-            let closestSpawn = harvester.pos.findClosestByPath(Spawn);
+            let closestSpawn = harvester.pos.findClosestByPath(FIND_MY_SPAWNS);
             let transferResult = harvester.withdraw(closestSpawn, RESOURCE_ENERGY);
             if (transferResult !== OK) {
                 switch (transferResult) {
