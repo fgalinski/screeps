@@ -14,7 +14,7 @@ module.exports = {
                     roleHarvester.run(creep);
                     break;
                 default:
-                    creep.memory.role = constants.ROLE_HARVESTER;
+                    creep.memory = constants.SMALL_HARVESTER_MEMORY;
             }
         }
     }

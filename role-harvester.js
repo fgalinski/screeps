@@ -1,8 +1,6 @@
 module.exports = {
     /**
      * Runs the given creep as a harvester.
-     *
-     * @param harvester Creep
      */
     run: function (harvester) {
         if (harvester.carry.energy <= 0) {
