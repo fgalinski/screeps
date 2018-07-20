@@ -19,5 +19,7 @@ module.exports = {
     MEMORY_UPGRADER: {
         role: 'Upgrader',
         upgrading: false
-    }
+    },
+
+    CONTROLLER_LEVEL_FOR_ROADS: 2
 };
