@@ -12,7 +12,11 @@ module.exports = {
                 continue;
             }
 
-            this.spawnUpgrader(spawn);
+            if (this.spawnUpgrader(spawn)) {
+                continue;
+            }
+
+            this.spawnBuilder(spawn);
         }
     },
 
@@ -23,18 +27,10 @@ module.exports = {
      * @return boolean
      */
     spawnHarvester: function (spawn) {
-        if (spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, 'test', {dryRun: true}) !== OK) {
-            return false;
-        }
-
-        if (_(Game.creeps).filter({memory: {role: constants.ROLE_HARVESTER}}).size() >= constants.MAX_AMOUNT_HARVESTERS) {
-            return false;
-        }
-
-        spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, constants.ROLE_HARVESTER + ' ' + Game.time.toString(), {
-            memory: constants.MEMORY_HARVESTER
-        });
-        return true;
+        return this.spawn(
+            spawn, constants.PARTS_SMALL_HARVESTER, constants.ROLE_HARVESTER, constants.MEMORY_HARVESTER,
+            constants.MAX_AMOUNT_HARVESTERS
+        );
     },
 
     /**
@@ -44,18 +40,44 @@ module.exports = {
      * @return boolean
      */
     spawnUpgrader: function (spawn) {
-        if (spawn.spawnCreep(constants.PARTS_SMALL_UPGRADER, 'test', {dryRun: true}) !== OK) {
+        return this.spawn(
+            spawn, constants.PARTS_SMALL_UPGRADER, constants.ROLE_UPGRADER, constants.MEMORY_UPGRADER,
+            constants.MAX_AMOUNT_UPGRADER
+        );
+    },
+
+    /**
+     * Spawns an upgrader if possible.
+     *
+     * @param spawn Spawn
+     * @return boolean
+     */
+    spawnBuilder: function (spawn) {
+        return this.spawn(
+            spawn, constants.PARTS_SMALL_BUILDER, constants.ROLE_BUILDER, constants.MEMORY_BUILDER,
+            constants.MAX_AMOUNT_BUILDERS
+        );
+    },
+
+    /**
+     * Spawns an creeps with the given parameters.
+     *
+     * @param spawn Spawn
+     * @param parts array
+     * @param role string
+     * @param memory object
+     * @param maxAmount int
+     * @return boolean
+     */
+    spawn: function (spawn, parts, role, memory, maxAmount) {
+        if (spawn.spawnCreep(parts, 'test', {dryRun: true}) !== OK) {
             return false;
         }
 
-        if (_(Game.creeps).filter({memory: {role: constants.ROLE_UPGRADER}}).size() >= constants.MAX_AMOUNT_UPGRADER) {
+        if (_(Game.creeps).filter({memory: {role: role}}).size() >= maxAmount) {
             return false;
         }
 
-
-        spawn.spawnCreep(constants.PARTS_SMALL_UPGRADER, constants.ROLE_UPGRADER + ' ' + Game.time.toString(), {
-            memory: constants.MEMORY_UPGRADER
-        });
-        return true;
+        return (spawn.spawnCreep(parts, role + ' ' + Game.time.toString(), {memory: memory}) === OK);
     }
 };
