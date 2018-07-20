@@ -7,8 +7,10 @@ module.exports.loop = function () {
     roleGeneral.handleRoles();
     buildingGeneral.handleConstruction();
 
-    // Constructor und Wartung
-    // Building findPathTo vom Spawn zu den sourcen, dann straße bauen.
-    // Dann Extennsions
-    // Room COntroller muss auf lvl 2 sein.
+    // Repair road creep
+    // Less idle creeps
+    // Better creep to source binding
+    // Dann Extennsions -> Room COntroller muss auf lvl 2 sein.
+    // Bigger Creeps
+    // Denken an Controller 3
 };
