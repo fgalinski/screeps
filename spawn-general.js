@@ -7,9 +7,6 @@ module.exports = {
     handleSpawning: function () {
         for (let spawnName in Game.spawns) {
             let spawn = Game.spawns[spawnName];
-            if (spawn.canCreateCreep(constants.PARTS_SMALL_HARVESTER) !== OK) {
-                continue;
-            }
 
             this.spawnHarvester(spawn);
             this.spawnUpgrader(spawn);
@@ -22,6 +19,10 @@ module.exports = {
      * @param spawn Spawn
      */
     spawnHarvester: function (spawn) {
+        if (spawn.canCreateCreep(constants.PARTS_SMALL_HARVESTER) !== OK) {
+            return;
+        }
+
         if (_(Game.creeps).filter({memory: {role: constants.ROLE_HARVESTER}}).size() >= constants.MAX_AMOUNT_HARVESTERS) {
             return;
         }
@@ -35,6 +36,10 @@ module.exports = {
      * @param spawn Spawn
      */
     spawnUpgrader: function (spawn) {
+        if (spawn.canCreateCreep(constants.PARTS_SMALL_UPGRADER) !== OK) {
+            return;
+        }
+
         if (_(Game.creeps).filter({memory: {role: constants.ROLE_UPGRADER}}).size() >= constants.MAX_AMOUNT_UPGRADER) {
             return;
         }
