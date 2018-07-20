@@ -45,8 +45,9 @@ module.exports = {
             }
         }
 
-        position = room.controller.pos;
-        let pathToController = position.findPathTo(source, {ignoreCreeps: true, ignoreRoads: true});
+        let controller = room.controller;
+        position = controller.pos;
+        let pathToController = position.findPathTo(controller, {ignoreCreeps: true, ignoreRoads: true});
         let pathToControllerLength = pathToController.length - 1;
         for (let index = 0; index < pathToControllerLength; ++index) {
             let path = pathToController[index];
