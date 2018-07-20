@@ -23,7 +23,7 @@ module.exports = {
      * @return boolean
      */
     spawnHarvester: function (spawn) {
-        if (spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, undefined, {dryRun: true}) !== OK) {
+        if (spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, 'test', {dryRun: true}) !== OK) {
             return false;
         }
 
@@ -31,7 +31,9 @@ module.exports = {
             return false;
         }
 
-        spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, undefined, {memory: constants.MEMORY_HARVESTER});
+        spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, constants.ROLE_HARVESTER + ' ' + Game.time.toString(), {
+            memory: constants.MEMORY_HARVESTER
+        });
         return true;
     },
 
@@ -42,7 +44,7 @@ module.exports = {
      * @return boolean
      */
     spawnUpgrader: function (spawn) {
-        if (spawn.spawnCreep(constants.PARTS_SMALL_UPGRADER, undefined, {dryRun: true}) !== OK) {
+        if (spawn.spawnCreep(constants.PARTS_SMALL_UPGRADER, 'test', {dryRun: true}) !== OK) {
             return false;
         }
 
@@ -50,7 +52,10 @@ module.exports = {
             return false;
         }
 
-        spawn.createCreep(constants.PARTS_SMALL_UPGRADER, undefined, {memory: constants.MEMORY_UPGRADER});
+
+        spawn.spawnCreep(constants.PARTS_SMALL_UPGRADER, constants.ROLE_UPGRADER + ' ' + Game.time.toString(), {
+            memory: constants.MEMORY_UPGRADER
+        });
         return true;
     }
 };
