@@ -32,6 +32,7 @@ module.exports = {
         }
 
         spawn.createCreep(constants.PARTS_SMALL_HARVESTER, undefined, constants.MEMORY_HARVESTER);
+        return true;
     },
 
     /**
@@ -50,5 +51,6 @@ module.exports = {
         }
 
         spawn.createCreep(constants.PARTS_SMALL_UPGRADER, undefined, constants.MEMORY_UPGRADER);
+        return true;
     }
 };
