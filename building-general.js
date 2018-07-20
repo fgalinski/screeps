@@ -45,6 +45,20 @@ module.exports = {
             }
         }
 
+        position = room.controller.pos;
+        let pathToController = position.findPathTo(source, {ignoreCreeps: true, ignoreRoads: true});
+        let pathToControllerLength = pathToController.length - 1;
+        for (let index = 0; index < pathToControllerLength; ++index) {
+            let path = pathToController[index];
+            if (room.lookForAt(LOOK_STRUCTURES, path.x, path.y).length > 0) {
+                continue;
+            }
+
+            if (room.createConstructionSite(path.x, path.y, STRUCTURE_ROAD) === OK) {
+                result = true;
+            }
+        }
+
         return result;
     }
 };
