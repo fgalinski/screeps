@@ -31,7 +31,7 @@ module.exports = {
         let position = spawn.pos;
         for (let sourceName in sources) {
             let source = sources[sourceName];
-            let pathToSource = position.findPathTo(source);
+            let pathToSource = position.findPathTo(source, {ignoreCreeps: true, ignoreRoads: true});
             let pathToSourceLength = pathToSource.length - 1;
             for (let index = 1; index < pathToSourceLength; ++index) {
                 let path = pathToSource[index];
