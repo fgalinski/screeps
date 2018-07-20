@@ -32,7 +32,9 @@ module.exports = {
         for (let sourceName in sources) {
             let source = sources[sourceName];
             let pathToSource = position.findPathTo(source);
-            for (let path in pathToSource) {
+            let pathToSourceLength = pathToSource.length - 1;
+            for (let index = 1; index < pathToSourceLength; ++index) {
+                let path = pathToSource[index];
                 if (room.lookForAt(LOOK_STRUCTURES, path.x, path.y).length > 0) {
                     continue;
                 }
