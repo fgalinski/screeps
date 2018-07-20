@@ -1,6 +1,7 @@
 let constants = require('constants');
 let roleHarvester = require('role-harvester');
 let roleUpgrader = require('role-upgrader');
+let roleBuilder = require('role-builder');
 
 module.exports = {
     /**
@@ -16,6 +17,9 @@ module.exports = {
                     break;
                 case constants.ROLE_UPGRADER:
                     roleUpgrader.run(creep);
+                    break;
+                case constants.ROLE_BUILDER:
+                    roleBuilder.run(creep);
                     break;
                 default:
                     creep.memory = constants.MEMORY_HARVESTER;

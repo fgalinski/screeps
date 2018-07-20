@@ -1,6 +1,6 @@
 module.exports = {
     /**
-     * Runs the given creep as a upgrader.
+     * Runs the given creep as an upgrader.
      *
      * @param upgrader Creep
      */
