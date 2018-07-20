@@ -23,7 +23,7 @@ module.exports = {
      * @return boolean
      */
     spawnHarvester: function (spawn) {
-        if (spawn.canCreateCreep(constants.PARTS_SMALL_HARVESTER) !== OK) {
+        if (spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, undefined, {dryRun: true}) !== OK) {
             return false;
         }
 
@@ -31,7 +31,7 @@ module.exports = {
             return false;
         }
 
-        spawn.createCreep(constants.PARTS_SMALL_HARVESTER, undefined, constants.MEMORY_HARVESTER);
+        spawn.spawnCreep(constants.PARTS_SMALL_HARVESTER, undefined, {memory: constants.MEMORY_HARVESTER});
         return true;
     },
 
@@ -42,7 +42,7 @@ module.exports = {
      * @return boolean
      */
     spawnUpgrader: function (spawn) {
-        if (spawn.canCreateCreep(constants.PARTS_SMALL_UPGRADER) !== OK) {
+        if (spawn.spawnCreep(constants.PARTS_SMALL_UPGRADER, undefined, {dryRun: true}) !== OK) {
             return false;
         }
 
@@ -50,7 +50,7 @@ module.exports = {
             return false;
         }
 
-        spawn.createCreep(constants.PARTS_SMALL_UPGRADER, undefined, constants.MEMORY_UPGRADER);
+        spawn.createCreep(constants.PARTS_SMALL_UPGRADER, undefined, {memory: constants.MEMORY_UPGRADER});
         return true;
     }
 };

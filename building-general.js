@@ -17,7 +17,7 @@ module.exports = {
     /**
      * Places construction sites for roads between the given spawn and all sources in the same room.
      *
-     * @param spawn Spawn
+     * @param spawn StructureSpawn
      * @return boolean
      */
     buildRoadsFromSpawnToSources: function (spawn) {
@@ -28,9 +28,10 @@ module.exports = {
         }
 
         let result = false;
+        let position = spawn.pos;
         for (let sourceName in sources) {
             let source = sources[sourceName];
-            let pathToSource = spawn.findPathTo(source);
+            let pathToSource = position.findPathTo(source);
             for (let path in pathToSource) {
                 if (room.lookForAt(LOOK_STRUCTURES, path.x, path.y).length > 0) {
                     continue;
